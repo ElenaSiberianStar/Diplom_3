@@ -18,4 +18,9 @@ public class ForgotPasswordPage {
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }
+
+    @Step("Открыть страницу восстановления пароля")
+    public void openForgotPasswordPage(String baseUrl) {
+        driver.get(baseUrl + "forgot-password");
+    }
 }

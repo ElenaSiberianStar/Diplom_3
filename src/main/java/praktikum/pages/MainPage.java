@@ -11,6 +11,8 @@ public class MainPage {
     private final By loginButtonMain = By.xpath(".//button[text()='Войти в аккаунт']");
     private final By personalAccountButton = By.xpath(".//p[text()='Личный Кабинет']");
 
+    // Локатор кнопки «Оформить заказ» (появляется после успешного входа)
+    private final By orderButton = By.xpath(".//button[text()='Оформить заказ']");
     // Вкладки конструктора
     private final By bunTab = By.xpath(".//span[text()='Булки']/parent::div");
     private final By sauceTab = By.xpath(".//span[text()='Соусы']/parent::div");
@@ -49,5 +51,13 @@ public class MainPage {
     public boolean isTabActive(String tabName) {
         By tab = By.xpath(".//span[text()='" + tabName + "']/parent::div");
         return driver.findElement(tab).getAttribute("class").contains("tab_tab_type_current");
+    }
+    @Step("Проверить, что отображается кнопка «Оформить заказ»")
+    public boolean isOrderButtonDisplayed() {
+        return driver.findElement(orderButton).isDisplayed();
+    }
+    @Step("Открыть главную страницу")
+    public void openMainPage(String baseUrl) {
+        driver.get(baseUrl);
     }
 }
